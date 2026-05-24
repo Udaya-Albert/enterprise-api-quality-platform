@@ -129,7 +129,7 @@
         <!-- Pact -->
         <dependency>
             <groupId>au.com.dius.pact.consumer</groupId>
-            <artifactId>junit5</artifactId>
+            <artifactId>junit</artifactId>
             <version>4.6.15</version>
         </dependency>
 
@@ -139,6 +139,12 @@
             <artifactId>wiremock</artifactId>
             <version>3.9.1</version>
         </dependency>
+        
+        <dependency>
+    <groupId>org.awaitility</groupId>
+    <artifactId>awaitility</artifactId>
+    <version>4.2.2</version>
+</dependency>
 
     </dependencies>
 
@@ -163,6 +169,17 @@
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                
+                    <dependencies>
+
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-testng</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+
+    </dependencies>
+
             </plugin>
 
             <!-- Allure -->

@@ -4,9 +4,9 @@
 
     <test name="API Tests">
 
-        <classes>
-            <class name="com.tests.BaseTest"/>
-        </classes>
+      <packages>
+            <package name="com.tests.api"/>
+        </packages>
 
     </test>
 
