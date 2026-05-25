@@ -1,5 +1,6 @@
 package com.framework.builders;
 
+import com.framework.auth.AuthManager;
 import com.framework.config.ConfigManager;
 import com.framework.constants.FrameworkConstants;
 import com.framework.filters.RequestLoggingFilter;
@@ -18,7 +19,7 @@ public class RequestSpecificationBuilder {
         ConfigManager config =
                 ConfigManager.getInstance();
 
-        return new RequestSpecBuilder()
+        RequestSpecBuilder builder = new RequestSpecBuilder()
 
                 .setBaseUri(
                         config.getProperty("base.url"))
@@ -35,8 +36,15 @@ public class RequestSpecificationBuilder {
                         new RequestLoggingFilter())
 
                 .addFilter(
-                        new ResponseLoggingFilter())
+                        new ResponseLoggingFilter());
+                
+        	String token = AuthManager.getToken();
+        	if (token != null && !token.isBlank()) {
 
-                .build();
+        	    builder.addHeader(
+        	            FrameworkConstants.AUTHORIZATION,
+        	            "Bearer " + token);
+        	}
+        	return builder.build();
     }
 }

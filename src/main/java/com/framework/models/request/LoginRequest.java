@@ -11,11 +11,9 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeRequest {
+public class LoginRequest {
 
-    private String firstName;
+    private String username;
 
-    private String lastName;
-
-    private String employeeId;
+    private String password;
 }

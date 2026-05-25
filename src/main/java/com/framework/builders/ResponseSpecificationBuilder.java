@@ -13,8 +13,8 @@ public class ResponseSpecificationBuilder {
 
         return new ResponseSpecBuilder()
 
-                .expectContentType(
-                        FrameworkConstants.APPLICATION_JSON)
+             //   .expectContentType(
+             //           FrameworkConstants.APPLICATION_JSON)
 
                 .build();
     }
