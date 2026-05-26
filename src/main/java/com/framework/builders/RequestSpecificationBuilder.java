@@ -18,6 +18,8 @@ public class RequestSpecificationBuilder {
 
         ConfigManager config =
                 ConfigManager.getInstance();
+        
+        
 
         RequestSpecBuilder builder = new RequestSpecBuilder()
 
@@ -44,6 +46,22 @@ public class RequestSpecificationBuilder {
         	    builder.addHeader(
         	            FrameworkConstants.AUTHORIZATION,
         	            "Bearer " + token);
+        	}
+        	
+        	boolean proxyEnabled =
+        	        Boolean.parseBoolean(
+        	                config.getProperty(
+        	                        "proxy.enabled"));
+
+        	if (proxyEnabled) {
+
+        	    builder.setProxy(
+
+        	            config.getProperty("proxy.host"),
+
+        	            Integer.parseInt(
+        	                    config.getProperty(
+        	                            "proxy.port")));
         	}
         	return builder.build();
     }
